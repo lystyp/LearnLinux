@@ -39,3 +39,4 @@ p
 ----------
 接著講到linux的目錄基本配置
 是follow FHS規範(Filesystem Hierarchy Standard )
+http://linux.vbird.org/linux_basic/0210filepermission.php#dir_fhs_root

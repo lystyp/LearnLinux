@@ -43,6 +43,18 @@ http://linux.vbird.org/linux_basic/0320bash.php#bash_command
  PATH=asd
  之後，ls指令就不能用了......
 
+ 變數也可以做成list
+ ex:
+ l[0]=p0
+ l[1]=p1
+ l[2]=p2
+then
+ echo $l > p0 # 預設show l 就是 show l[0]
+ echo $l[2] > p0[2] # 不能用$l[2]，他會判斷為 $l + [2]
+ echo ${l[2]} > p2 # 這樣就正確了
+
+
+
 生命週期好像shell關掉變數也就跟著沒了，也就是說，
 我可以理解成一些系統指定的變數，像是PATH之類的，應該是早就寫在某個文件檔裡了，
 每次開shell都會去把那些資訊讀出來存在變數裡，所以每次重進shell都會重讀
@@ -60,6 +72,33 @@ http://linux.vbird.org/linux_basic/0320bash.php#bash_command
 
  若該變數為擴增變數內容時，則可用 "$變數名稱" 或 ${變數} 累加內容，如下所示：
 『PATH="$PATH":/home/bin』或『PATH=${PATH}:/home/bin』
+
+ 可用跳脫字元『 \ 』將特殊符號(如 [Enter], $, \, 空白字元...等)變成一般字元，如：
+ myname=VBird\ Tsai
+
+在一串指令的執行中，還需要藉由其他額外的指令所提供的資訊時，可以使用反單引號『`指令`』或 『$(指令)』。
+特別注意，那個 `` 是鍵盤上方的數字鍵 1 左邊那個按鍵，而不是單引號！ 例如:
+『version=$(uname -r)』再『echo $version』可得『3.10.0-229.el7.x86_64』
+
+echo -n 不换行输出
+$echo -n "123"
+$echo "456"
+最终输出 
+123456
+
+echo -e 处理特殊字符
+若字符串中出现以下字符，则特别加以处理，而不会将它当成一般文字输出：
+\a 发出警告声；
+\b 删除前一个字符；
+\c 最后不加上换行符号；
+\f 换行但光标仍旧停留在原来的位置；
+\n 换行且光标移至行首；
+\r 光标移至行首，但不换行；
+\t 插入tab；
+\v 与\f相同；
+\\ 插入\字符；
+\nnn 插入nnn（八进制）所代表的ASCII字符；
+
 
  可以用env或set來看目前系統的一大堆變數和設定等等
  http://linux.vbird.org/linux_basic/0320bash.php#env

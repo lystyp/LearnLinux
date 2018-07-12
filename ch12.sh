@@ -117,7 +117,7 @@ if [ 條件判斷式 ]; then
 	當條件判斷式成立時，可以進行的指令工作內容；
 fi
 # 這裡的條件判斷式就是上面提到過的跟test同功能的中括號
-# 如果有多個判斷式，一個中括號裡面的很多判斷式可以用 -o(就是or的意思)來連接(and 不知道是啥，要用再去google)
+# 如果有多個判斷式，一個中括號裡面的很多判斷式可以用 -o(就是or的意思)來連接(and 是-a, not 是!)
 # 或是用很多個中括號來包很多個判斷式，然後用&& 和 || 來連接
 [ "${yn}" == "Y" -o "${yn}" == "y" ]
 # 上式可替換為
@@ -125,5 +125,53 @@ fi
 # &&用在一般指令是如果true就執行&&後面的東西，||則是如果false就執行後面的東西(在管線那邊用到的)
 # 但用在判斷式就有不一樣的意思了
 
-# 目前看到多重、複雜條件判斷式
-# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#ifthen_multi
+# ------------------------複雜的條件判斷式--------------------
+# 有
+if...elif...else...fi
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#ifthen
+
+# 有
+case ... in...
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#case
+
+# ------------------------function---------------
+# 還有function可以用啊...QAQ
+# function 在這邊比較像，在.sh裡面寫一個在這個空間裡面才可以用的新指令
+# 因為 shell script 的執行方式是由上而下，由左而右， 
+# 因此在 shell script 當中的 function 的設定一定要在程式的最前面， 這樣才能夠在執行時被找到可用的程式段
+# Ex:
+# In test.sh
+function print(){
+    echo "Hello"
+}
+print # 這裡不是用print()來執行，因為現在print已經變成一個指令了，所以質些print就好了
+# Result is
+Hello
+
+# 關於function給的變數
+# In test.sh
+function print(){
+    echo -e "In print:\n p0 is ${0}, p1 is ${1}, p2 is ${2}"
+}
+print asd 123
+echo -e "Out of print:\n p0 is ${0}, p1 is ${1}, p2 is ${2}"
+# Result is
+In print:
+ p0 is ./test.sh, p1 is asd, p2 is 123 # 在print 裡面除了$0跟外面是一樣的之外，$1和$2都是我下print指令時一起給的參數
+Out of print:
+ p0 is ./test.sh, p1 is qwe, p2 is 456
+
+
+# ------------------------------迴圈----------------------------------------
+# while迴圈 跟 until迴圈
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#while
+
+# for a in b 迴圈
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#for
+
+# for i = 0; i < x; i = i+1 迴圈
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#for_2
+
+# -----------------------.sh 要怎麼debug------------------------
+# 可以做一些判斷語法是否正確啦、逐行執行之類的
+# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#debug

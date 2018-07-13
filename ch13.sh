@@ -25,3 +25,8 @@ http://linux.vbird.org/linux_basic/0410accountmanager.php#group_file
 1. 系統管理員，UID = 0 就是root啦
 2. 系統使用者，UID = 1~999，系統可能會需要跑一些其他程序，或是外部連進系統要執行某些東西也會需要一個使用者的身分，
 3. 一般的使用者，UID = other
+
+
+Mac的使用者管理似乎和一般的linux 不太一樣，也沒有user可以用，所以就先跳過吧！
+https://superuser.com/questions/191330/users-dont-appear-in-etc-passwd-on-mac-os-x
+管理使用者群組跟使用者等有linux系統再來玩玩看

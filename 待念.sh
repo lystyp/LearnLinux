@@ -22,3 +22,17 @@ ch10.
 3.終端機介面 (tty1 ~ tty6) 是什麼東西？
 
 ch11是正規表示式，先跳過
+
+ch13
+Mac的使用者管理似乎和一般的linux 不太一樣，也沒有user可以用，所以就先跳過吧！
+https://superuser.com/questions/191330/users-dont-appear-in-etc-passwd-on-mac-os-x
+管理使用者群組跟使用者等有linux系統再來玩玩看
+
+ch14
+第十四章、磁碟配額(Quota)與進階檔案系統管理
+跳過
+
+ch15
+第十五章、例行性工作排程(crontab)
+這個不知道什麼時候才會用到，也跳過吧～～
+
